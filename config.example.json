@@ -1,0 +1,57 @@
+{
+  "_comment": "Copy to config.local.json (gitignored) and fill in your tenant's values. None of these are secrets — they are identifiers — but they uniquely fingerprint your tenant, so keep them out of the public repo.",
+
+  "tenant": {
+    "primaryDomain": "<yourtenant>.onmicrosoft.com",
+    "tenantId": "00000000-0000-0000-0000-000000000000"
+  },
+
+  "appRegistrations": {
+    "serviceHealthMonitor": {
+      "displayName": "M365-Service-Health-Monitor",
+      "clientId": "00000000-0000-0000-0000-000000000000",
+      "_secret": "stored in Power Automate connection only — never in this file",
+      "_requiredScopes": [
+        "ServiceHealth.Read.All",
+        "ServiceMessage.Read.All"
+      ]
+    }
+  },
+
+  "sharepoint": {
+    "siteUrl": "https://<yourtenant>.sharepoint.com/sites/ServiceOps",
+    "listName": "ServiceHealthIncidents",
+    "listGuid": "00000000-0000-0000-0000-000000000000"
+  },
+
+  "teams": {
+    "_comment": "Channel where active incidents are posted. Webhook URL is gitignored — store in config.local.json or directly in the Power Automate Teams connector.",
+    "channelName": "M365 Service Alerts",
+    "_webhookUrl": "https://<tenant>.webhook.office.com/webhookb2/..."
+  },
+
+  "powerPlatform": {
+    "environmentId": "Default-00000000-0000-0000-0000-000000000000",
+    "environmentUrl": "https://org00000000.crm.dynamics.com",
+    "flows": {
+      "pollerFlowGuid": "00000000-0000-0000-0000-000000000000",
+      "pollerFlowDisplayName": "Flow-ServiceHealth-Poller",
+      "digestFlowGuid": "00000000-0000-0000-0000-000000000000",
+      "digestFlowDisplayName": "Flow-ServiceHealth-DailyDigest"
+    }
+  },
+
+  "subscribedServices": [
+    "Exchange Online",
+    "SharePoint Online",
+    "Microsoft Teams",
+    "Microsoft Entra",
+    "OneDrive for Business",
+    "Power Automate"
+  ],
+
+  "digestRecipients": {
+    "to": "it-ops@<yourtenant>.onmicrosoft.com",
+    "cc": ""
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "contentUrl": null,
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "msteams": { "width": "Full" },
+        "body": [
+          {
+            "type": "Container",
+            "style": "attention",
+            "bleed": true,
+            "items": [
+              {
+                "type": "TextBlock",
+                "size": "Large",
+                "weight": "Bolder",
+                "color": "Attention",
+                "text": "Smoke test - Exchange Online"
+              },
+              {
+                "type": "TextBlock",
+                "spacing": "None",
+                "weight": "Bolder",
+                "text": "Users may be unable to access their mailboxes in Exchange Online",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              { "title": "Incident ID",    "value": "EX-SMOKE-001" },
+              { "title": "Status",         "value": "serviceDegradation" },
+              { "title": "Classification", "value": "incident" },
+              { "title": "Service",        "value": "Exchange Online" },
+              { "title": "Feature",        "value": "E-Mail timely delivery" },
+              { "title": "Started",        "value": "2026-05-22 17:00 UTC" }
+            ]
+          },
+          {
+            "type": "TextBlock",
+            "text": "**Impact**",
+            "wrap": true,
+            "spacing": "Medium"
+          },
+          {
+            "type": "TextBlock",
+            "text": "Affected users are unable to access their mailboxes via Outlook on the web.",
+            "wrap": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "**Latest post**",
+            "wrap": true,
+            "spacing": "Medium"
+          },
+          {
+            "type": "TextBlock",
+            "text": "We're investigating an issue affecting Outlook on the web. Initial telemetry suggests an issue with our authentication infrastructure. We'll update within 30 minutes.",
+            "wrap": true,
+            "isSubtle": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "[Smoke test posted by scripts/Test-Webhook.ps1 - safe to ignore or delete]",
+            "wrap": true,
+            "size": "Small",
+            "color": "Accent",
+            "isSubtle": true,
+            "spacing": "Large"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "title": "Open in M365 admin center",
+            "url": "https://admin.microsoft.com/Adminportal/Home#/servicehealth"
+          }
+        ]
+      }
+    }
+  ]
+}

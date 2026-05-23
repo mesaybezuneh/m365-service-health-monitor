@@ -1,0 +1,36 @@
+# Credentials and secrets
+config.local.json
+*.secret
+*.pfx
+*.key
+*.env
+*.env.*
+!*.env.example
+
+# Flow definition exports — may contain embedded Graph API client secret
+flow-*.json
+
+# Test data with real tenant identifiers
+incidents-*.json
+test-output-*.csv
+
+# Claude Code local state (chat memory, hooks, logs, project-private guidance)
+.claude/
+.remember/
+CLAUDE.md
+
+# Personal study notes — local only, not for the public repo
+docs/private-notes/
+
+# PowerShell / IDE noise
+*.pssproj
+*.suo
+.vs/
+.vscode/*
+!.vscode/settings.example.json
+.idea/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
