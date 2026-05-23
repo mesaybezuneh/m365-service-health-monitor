@@ -4,6 +4,8 @@ A Power Automate-based monitor for Microsoft 365 service incidents. Polls the Mi
 
 Sister project to [m365-user-lifecycle-automation](https://github.com/mesaybezuneh/m365-user-lifecycle-automation).
 
+**Author:** Mesay Bezuneh
+
 ## Problem statement
 
 The Microsoft 365 admin center shows service health to anyone who logs in. It does not push. If an Exchange incident is opened at 03:00 and IT operations does not log in until 09:00, six hours of user-impact tickets accumulate against an incident Microsoft already knew about. This project closes that loop with two automations:
@@ -98,6 +100,18 @@ The Microsoft 365 admin center shows service health to anyone who logs in. It do
 3. Provision the `ServiceHealthIncidents` SharePoint list per `docs/01-sharepoint-schema.md`.
 4. Create the Teams channel and Incoming Webhook. Record the URL in `config.local.json`.
 5. Build the two flows per `docs/02-power-automate-flows.md`.
+
+## Disclaimer
+
+This project is a proof-of-concept built in a Microsoft 365 Developer Program tenant and is provided as-is, without warranty, for educational and reference purposes only. It is not production-hardened. Specifically:
+
+- The Microsoft Graph client secret is embedded inline in the Power Automate flow JSON. The flow JSON is gitignored locally and never committed, but the production-correct pattern is to externalize secrets to Azure Key Vault and reference them via a managed identity.
+- No automated secret-rotation is wired up. The 6-month expiry is tracked manually.
+- The SharePoint and Office 365 Outlook connections authenticate as a user identity rather than a managed identity. If that user leaves the tenant, the flow breaks.
+- The failure-summary email path itself has no fallback; if Office 365 Outlook is the failing component, no notification is sent.
+- All tenant identifiers (site URLs, list GUIDs, app object IDs, webhook URLs) are tenant-specific. They will not work in another tenant without re-provisioning every artifact via the included setup scripts.
+
+Before adapting any pattern from this repo for a production tenant, perform a security review and replace each of the above with the production-correct alternative.
 
 ## License
 
